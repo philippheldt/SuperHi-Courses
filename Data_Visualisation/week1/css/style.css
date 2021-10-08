@@ -55,6 +55,54 @@ rect{
     fill: var(--primary-orange);
 }
 
-circle{
+text.steps{
+    opacity: 0;
+    transition: all ease 0.5s;
+}
+
+g:hover text.steps{
+    transform: translateY(0px);
+    opacity: 1;
+}
+
+text{
+    fill: var(--secondary-orange);
+    text-anchor: middle;
+    font-size: 14px;
+}
+
+text.day{
+    fill: var(--secondary-blue);
+}
+
+rect.transparent{
+    opacity:0
+}
+
+
+circle.actual{
     fill: var(--primary-blue);
+    transition: all ease 0.5s;
+}
+
+circle.ring{
+    fill: none;
+    opacity: 0.5;
+    stroke: var(--secondary-blue);
+    stroke-width: 1px;
+}
+
+text.day{
+    opacity: 1;
+    transition: all ease 0.25;
+}
+
+
+g:hover text.day{
+    transform: translateY(0px);
+    opacity: 0;
+}
+
+g:hover circle.actual{
+    fill: var(--primary-orange);
 }
