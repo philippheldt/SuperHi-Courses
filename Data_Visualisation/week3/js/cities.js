@@ -9,15 +9,24 @@ svg
     .attr("height", 720)
 
 const placeCities = function(){
-    let valueX = "singlePerson"
-    let valueY = "family"
+    let inputX = document.querySelector("select[name=valueX]")
+    let inputY = document.querySelector("select[name=valueY]")
+    
+    let valueX = inputX.value
+    let valueY = inputY.value
+
+
+    // find max value of the data
+
+    let maxValueX = d3.max(data, (d,i) => {return d[valueX]} )
+    let maxValueY = d3.max(data, (d,i) => {return d[valueY]} )
 
     const scaleX = d3.scaleLinear()
-        .domain([0,1500])
+        .domain([0, maxValueX])
         .range([100,860])
 
     const scaleY = d3.scaleLinear()
-        .domain([0,4800])
+        .domain([0, maxValueY])
         .range([620,100])
 
     const cities = svg
@@ -27,8 +36,8 @@ const placeCities = function(){
         .append("g")
         .attr("class", "city")
         .attr("transform", (d,i) => {
-            const x = scaleX(d.singlePerson)
-            const y = scaleY(d.apartment)
+            const x = scaleX(d[valueX])
+            const y = scaleY(d[valueY])
             return `translate(${x},${y})`
         })
 
@@ -37,6 +46,16 @@ const placeCities = function(){
         .attr("cx", 0)
         .attr("cy", 0)
         .attr("r", 15)
+
+    svg
+        .selectAll("g.city")
+        .transition()
+        .duration(500)
+        .attr("transform", (d,i) => {
+            const x = scaleX(d[valueX])
+            const y = scaleY(d[valueY])
+            return `translate(${x},${y})`
+        })
 }
 
 placeCities()
