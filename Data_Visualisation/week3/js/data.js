@@ -160,13 +160,13 @@ let data = [
     "expensiveMeal": 20.83
   },
   {
-      "city": "Summary",
+      "city": "Freiburg",
       "population": 230241,
       "singlePerson": 759.48,
       "family": 2606.81,
-      "apartment": null,
-      "utilities": null,
-      "monthlyPass": null,
-      "expensiveMeal": null
+      "apartment": 1859,
+      "utilities": 242,
+      "monthlyPass": 74.27,
+      "expensiveMeal": 50.83
   }
 ]

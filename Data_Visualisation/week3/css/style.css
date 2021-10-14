@@ -24,3 +24,26 @@ h1{
 span{
     margin: 0 8px;
 }
+
+circle{
+    fill: var(--primary-color);
+    stroke: var(--background);
+    stroke-width: 3px;
+}
+
+line{
+    stroke-width: 1px;
+    stroke-dasharray: 2 7;
+}
+
+path.domain{
+    stroke-width: 3px;
+}
+
+text.x-axis, text.y-axis {
+    fill: var(--primary-color);
+    font-size: 24px;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    font-weight: bold;
+}
