@@ -47,3 +47,28 @@ text.x-axis, text.y-axis {
     dominant-baseline: middle;
     font-weight: bold;
 }
+
+g.city rect{
+    fill: var(--primary-color);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+g.city text{
+    fill: var(--background);
+    text-anchor: middle;
+    font-size: 14px;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+g.city:hover rect,
+g.city:hover text{
+    opacity: 1;
+}
+
+@media (max-width: 1000px) {
+    body{
+        margin: 20px;
+    }
+}
