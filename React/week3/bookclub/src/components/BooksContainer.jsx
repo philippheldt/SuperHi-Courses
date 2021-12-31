@@ -40,13 +40,13 @@ export const BookList = styled.div`
   }
 `
 
-const BooksContainer = ({ books }) => {
+const BooksContainer = ({ books, pickBook }) => {
   return (
     <Container>
       <H2>All books</H2>
       <BookList>
         {books.map((book) => (
-          <Book key={book.id} book={book} />
+          <Book isLarge={false} key={book.id} book={book} pickBook={pickBook} />
         ))}
       </BookList>
     </Container>
