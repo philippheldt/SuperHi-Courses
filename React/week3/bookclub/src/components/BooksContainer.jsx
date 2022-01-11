@@ -5,7 +5,8 @@ import Book from './Book'
 export const Container = styled.div`
   background-color: #a7e1f8;
   padding: 100px 40px;
-  overflow: scroll;
+  overflow: ${({ $isPanelOpen }) => ($isPanelOpen ? 'hidden' : 'scroll')};
+  position: ${({ $isPanelOpen }) => ($isPanelOpen ? 'fixed' : 'unset')};
 
   @media (max-width: 800px) {
     padding: 114px 20px;
@@ -40,9 +41,9 @@ export const BookList = styled.div`
   }
 `
 
-const BooksContainer = ({ books, pickBook }) => {
+const BooksContainer = ({ books, pickBook, isPanelOpen }) => {
   return (
-    <Container>
+    <Container $isPanelOpen={isPanelOpen}>
       <H2>All books</H2>
       <BookList>
         {books.map((book) => (

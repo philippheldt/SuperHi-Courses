@@ -3,10 +3,12 @@ import BooksComponent from './components/BooksContainer'
 import { GlobalStyle } from './styles'
 import Header from './components/Header'
 import DetailPanel from './components/DetailPanel'
+import { Transition } from 'react-transition-group'
 
 const App = () => {
   const [books, setBooks] = useState([])
   const [selectedBook, setSelectedBook] = useState(null)
+  const [showPanel, setShowPanel] = useState(false)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,6 +26,11 @@ const App = () => {
 
   const pickBook = (book) => {
     setSelectedBook(book)
+    setShowPanel(true)
+  }
+
+  const closePanel = () => {
+    setShowPanel(false)
   }
 
   console.log(selectedBook)
@@ -32,8 +39,10 @@ const App = () => {
     <>
       <GlobalStyle />
       <Header />
-      <BooksComponent books={books} pickBook={pickBook} />
-      {selectedBook && <DetailPanel book={selectedBook} />}
+      <BooksComponent books={books} pickBook={pickBook} isPanelOpen={showPanel} />
+      <Transition in={showPanel} timeout={300}>
+        {(state) => <DetailPanel book={selectedBook} closePanel={closePanel} state={state} />}
+      </Transition>
     </>
   )
 }
